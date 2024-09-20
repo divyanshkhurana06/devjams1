@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,8 +66,19 @@
             font-weight: bold;
         }
 
-        .footer a:hover {
-            color: #ffe066;
+        .footer a {
+            color: #faf8f1;
+            font-size: 13.4px;
+        }
+
+        /* New styling for Past and Upcoming events */
+        .event-section {
+            margin-top: 20px;
+        }
+
+        .event-section h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -88,33 +99,60 @@
 
         <div class="event-list">
             <h2>Events Registered</h2>
-            <div id="registered-events">
+
+            <div class="event-section">
+                <h3>Upcoming Events</h3>
+                <div id="upcoming-events"></div>
+            </div>
+
+            <div class="event-section">
+                <h3>Past Events</h3>
+                <div id="past-events"></div>
             </div>
         </div>
     </div>
 
     <div class="footer">
         <p>&copy; 2024 VitBuzz. All rights reserved.</p>
-        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
     </div>
 
     <script>
-        // Function to update registered events
-        function updateRegisteredEvents(event) {
-            const registeredEventsContainer = document.getElementById('registered-events');
-            const eventElement = document.createElement('div');
-            eventElement.classList.add('event');
-            eventElement.textContent = event;
-            registeredEventsContainer.appendChild(eventElement);
-        }
+        // Function to load events from localStorage
+        const loadRegisteredEvents = () => {
+            // Get events from localStorage
+            let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
 
-        // Example: Simulating event registration (to be triggered when an event is registered)
-        // This will be replaced with actual registration logic
-        window.onload = function() {
-            // Simulating registered events
-            updateRegisteredEvents('Tech Symposium - September 25, 2024');
-            updateRegisteredEvents('Cultural Fest - September 30, 2024');
+            const upcomingEventsContainer = document.getElementById('upcoming-events');
+            const pastEventsContainer = document.getElementById('past-events');
+
+            // Get today's date
+            const today = new Date();
+
+            // Helper function to create event elements
+            function createEventElement(event) {
+                const eventElement = document.createElement('div');
+                eventElement.classList.add('event');
+                const eventDate = new Date(event.date);
+                eventElement.textContent = `${event.name} - ${eventDate.toDateString()}`;
+                return eventElement;
+            }
+
+            // Categorize events into past and upcoming based on today's date
+            events.forEach(event => {
+                const eventDate = new Date(event.date);
+                if (eventDate >= today) {
+                    // Future event
+                    upcomingEventsContainer.appendChild(createEventElement(event));
+                } else {
+                    // Past event
+                    pastEventsContainer.appendChild(createEventElement(event));
+                }
+            });
         };
+
+        // Load events on page load
+        window.onload = loadRegisteredEvents;
     </script>
 
 </body>

@@ -208,8 +208,9 @@
             font-weight: bold;
         }
 
-        .footer a:hover {
-            color: #ffe066;
+        .footer a {
+            color: #f8f8f5;
+            font-size: 13.4px;
         }
     </style>
 </head>
@@ -221,7 +222,7 @@
         <ul>
             <li><a href="#articles">Articles</a></li>
             <li><a href="#clubs">Clubs</a></li>
-            <li><a href="#profile">Profile</a></li>
+            <li><a href="profile.html">Profile</a></li>
         </ul>
     </div>
 
@@ -243,6 +244,7 @@
             <p>Date: September 25, 2024</p>
             <p>Time: 5:00 PM - 7:00 PM</p>
             <p>Join us for an exciting hackathon!Do crazy things that matter</p>
+            <button class="btn" onclick="registerEvent('GDSC', '2024-09-25')">Register</button>
         </div>
 
         <div id="event2" class="event-card">
@@ -251,6 +253,7 @@
             <p>Date: September 30, 2024</p>
             <p>Time: 3:00 PM - 10:00 PM</p>
             <p>Join us for the celeberation</p>
+            <button class="btn" onclick="registerEvent('Vitty success party', '2024-09-30')">Register</button>
         </div>
 
         <div id="event3" class="event-card">
@@ -259,6 +262,7 @@
             <p>Date: October 5, 2024</p>
             <p>Time: 8:00 AM - 4:00 PM</p>
             <p>Join us for a day of friendly debate!</p>
+            <button class="btn" onclick="registerEvent('Which is the best club?', '2024-10-05')">Register</button>
         </div>
 
         <div id="event4" class="event-card">
@@ -267,6 +271,7 @@
             <p>Date: October 10, 2024</p>
             <p>Time: 9:00 AM - 6:00 PM</p>
             <p>The same scavenger hunt part 1</p>
+            <button class="btn" onclick="registerEvent('IEEE society', '2024-10-10')">Register</button>
         </div>
 
         <div id="event5" class="event-card">
@@ -275,6 +280,7 @@
             <p>Date: October 15, 2024</p>
             <p>Time: 6:00 PM - 10:00 PM</p>
             <p>The same scavenger hunt part 2</p>
+            <button class="btn" onclick="registerEvent('Code chef 2024', '2024-10-15')">Register</button>
         </div>
 
         <div id="event6" class="event-card">
@@ -283,7 +289,25 @@
             <p>Date: October 17, 2024</p>
             <p>Time: 6:00 PM - 10:00 PM</p>
             <p>The same scavenger hunt part 404</p>
+            <button class="btn" onclick="registerEvent('ACM 2024', '2024-10-17')">Register</button>
         </div>
+
+        
+
+    <script>
+        function registerEvent(eventName, eventDate) {
+            let registeredEvents = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+                
+                // Add the event as an object with name and date properties
+            registeredEvents.push({
+                name: eventName,
+                date: eventDate
+            });
+        
+            localStorage.setItem('registeredEvents', JSON.stringify(registeredEvents));
+            alert('You have registered for ' + eventName);
+            }
+    </script>
 
         <!-- Interactive Arrows -->
         <span class="arrow arrow-left" id="prevEvent">&#10094;</span>
@@ -299,7 +323,7 @@
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 VitBuzz. All rights reserved.</p>
-        <p><a href="#">Researched through INTELX Labs</a> | <a href="#">Data analysed through Thinklayer</a></p>
+        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
     </div>
 
     <script>
