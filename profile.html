@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitBuzz - Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffcc00;
+            margin-bottom: 30px;
+        }
+
+        .profile-info {
+            margin-bottom: 20px;
+        }
+
+        .profile-info label {
+            font-weight: bold;
+        }
+
+        .event-list {
+            margin-top: 20px;
+        }
+
+        .event-list h2 {
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        .event {
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #bbb;
+        }
+
+        .footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ffe066;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Profile</h1>
+
+        <div class="profile-info">
+            <label for="name">Name:</label>
+            <p id="name">Douglas Adams</p>
+        </div>
+
+        <div class="profile-info">
+            <label for="email">Email:</label>
+            <p id="email">douglas.adams42@example.com</p>
+        </div>
+
+        <div class="event-list">
+            <h2>Events Registered</h2>
+            <div id="registered-events">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <script>
+        // Function to update registered events
+        function updateRegisteredEvents(event) {
+            const registeredEventsContainer = document.getElementById('registered-events');
+            const eventElement = document.createElement('div');
+            eventElement.classList.add('event');
+            eventElement.textContent = event;
+            registeredEventsContainer.appendChild(eventElement);
+        }
+
+        // Example: Simulating event registration (to be triggered when an event is registered)
+        // This will be replaced with actual registration logic
+        window.onload = function() {
+            // Simulating registered events
+            updateRegisteredEvents('Tech Symposium - September 25, 2024');
+            updateRegisteredEvents('Cultural Fest - September 30, 2024');
+        };
+    </script>
+
+</body>
+</html>
