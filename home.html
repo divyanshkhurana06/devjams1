@@ -104,6 +104,76 @@
             background-color: #ff8800;
         }
 
+        /* Hottest Events Section */
+        .hottest-events {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #1c1c1c;
+            position: relative;
+        }
+
+        .hottest-events h2 {
+            font-size: 36px;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .hottest-events p {
+            font-size: 22px;
+            color: #eaeaea;
+            margin-bottom: 30px;
+        }
+
+        .event-card {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+            display: none; /* Hide all by default */
+            position: relative;
+        }
+
+        .event-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Interactive Arrows */
+        .arrow {
+            cursor: pointer;
+            font-size: 36px;
+            color: #ffcc00;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            padding: 10px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .arrow:hover {
+            color: #ffe066;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .arrow-left {
+            left: 10px; /* Adjust positioning */
+        }
+
+        .arrow-right {
+            right: 10px; /* Adjust positioning */
+        }
+
         /* Slogan Section */
         .slogan {
             text-align: center;
@@ -150,7 +220,7 @@
         <div class="logo">VitBuzz</div>
         <ul>
             <li><a href="#articles">Articles</a></li>
-            <li><a href="#events">Events</a></li>
+            <li><a href="#clubs">Clubs</a></li>
             <li><a href="#profile">Profile</a></li>
         </ul>
     </div>
@@ -162,16 +232,93 @@
         <button class="btn" onclick="window.location.href='events.html'">Discover Events</button>
     </div>
 
+    <!-- Hottest Events Section -->
+    <section class="hottest-events">
+        <h2>Hottest Events Right Now! Don't Miss Out!</h2>
+        <p>Catch up on the latest happenings around campus.</p>
+
+        <div id="event1" class="event-card" style="display: block;">
+            <img src="event-image1.jpg" alt="Event Image 1">
+            <h3>Tech Symposium</h3>
+            <p>Date: September 25, 2024</p>
+            <p>Time: 5:00 PM - 7:00 PM</p>
+            <p>Join us for an exciting discussion on the latest in technology!</p>
+        </div>
+
+        <div id="event2" class="event-card">
+            <img src="event-image2.jpg" alt="Event Image 2">
+            <h3>Cultural Fest</h3>
+            <p>Date: September 30, 2024</p>
+            <p>Time: 3:00 PM - 10:00 PM</p>
+            <p>Experience the diversity of cultures with performances and food!</p>
+        </div>
+
+        <div id="event3" class="event-card">
+            <img src="event-image3.jpg" alt="Event Image 3">
+            <h3>Sports Meet</h3>
+            <p>Date: October 5, 2024</p>
+            <p>Time: 8:00 AM - 4:00 PM</p>
+            <p>Join us for a day of friendly competition and sportsmanship!</p>
+        </div>
+
+        <div id="event4" class="event-card">
+            <img src="event-image4.jpg" alt="Event Image 4">
+            <h3>Hackathon 2024</h3>
+            <p>Date: October 10, 2024</p>
+            <p>Time: 9:00 AM - 6:00 PM</p>
+            <p>Compete with teams to create innovative solutions!</p>
+        </div>
+
+        <div id="event5" class="event-card">
+            <img src="event-image5.jpg" alt="Event Image 5">
+            <h3>Music Concert</h3>
+            <p>Date: October 15, 2024</p>
+            <p>Time: 6:00 PM - 10:00 PM</p>
+            <p>Enjoy an evening of live music from popular bands!</p>
+        </div>
+
+        <!-- Interactive Arrows -->
+        <span class="arrow arrow-left" id="prevEvent">&#10094;</span>
+        <span class="arrow arrow-right" id="nextEvent">&#10095;</span>
+    </section>
+
     <!-- Slogan Section -->
     <section class="slogan">
         <h2>Experience the Best of VIT</h2>
-        <p>At VitBuzz, we bring together all the events and activities happening across the campus in one place. Engage with clubs, explore opportunities, and elevate your experience at VIT like never before.</p>
+        <p>At VitBuzz, we bring together all the events and activities happening across the campus. Connect with your peers, explore opportunities, and elevate your college experience!</p>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>Made with ❤️ by VitBuzz Team | <a href="#">Contact Us</a></p>
-    </footer>
+    <div class="footer">
+        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+
+    <script>
+        const events = document.querySelectorAll('.event-card');
+        let currentEventIndex = 0;
+
+        // Function to show the current event
+        const showEvent = (index) => {
+            events.forEach((event, i) => {
+                event.style.display = i === index ? 'block' : 'none';
+            });
+        };
+
+        // Show the first event
+        showEvent(currentEventIndex);
+
+        // Previous and Next event functionality
+        document.getElementById('prevEvent').onclick = function() {
+            currentEventIndex = (currentEventIndex - 1 + events.length) % events.length;
+            showEvent(currentEventIndex);
+        };
+
+        document.getElementById('nextEvent').onclick = function() {
+            currentEventIndex = (currentEventIndex + 1) % events.length;
+            showEvent(currentEventIndex);
+        };
+    </script>
 
 </body>
 </html>
