@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitBuzz - Events</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #121212;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .header h1 {
+            color: #ffcc00;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .events-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            background-color: #1a1a1a;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .event-card:hover {
+            box-shadow: 0px 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-header h2 {
+            font-size: 24px;
+            margin: 0;
+            color: #ff6600;
+        }
+
+        .event-header span {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .event-details {
+            margin-top: 10px;
+            color: #eaeaea;
+        }
+
+        .club-name {
+            font-weight: 600;
+            color: #ffcc00;
+        }
+
+        .event-description {
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Scrollable content */
+        .scrollable {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* Scrollbar Styling */
+        .scrollable::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .scrollable::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        .scrollable::-webkit-scrollbar-thumb {
+            background-color: #ffcc00;
+            border-radius: 10px;
+        }
+
+        .btn-register {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn-register:hover {
+            background-color: #ff8800;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>VitBuzz Events</h1>
+        <p>Discover all the amazing events happening at VIT</p>
+    </div>
+
+    <div class="events-container scrollable">
+        <!-- Event 1 -->
+        <div class="event-card">
+            <div class="event-header">
+                <h2>Tech Workshop</h2>
+                <span>Organized by: <span class="club-name">VIT Tech Club</span></span>
+            </div>
+            <div class="event-details">
+                <span>Date: 25th September 2024 | Time: 10:00 AM</span>
+                <div class="event-description">
+                    Join the VIT Tech Club for an exciting workshop on AI & ML technologies. Learn the basics of neural networks and get hands-on experience with Python libraries like TensorFlow.
+                </div>
+                <button class="btn-register">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="event-card">
+            <div class="event-header">
+                <h2>Music Festival</h2>
+                <span>Organized by: <span class="club-name">VIT Music Society</span></span>
+            </div>
+            <div class="event-details">
+                <span>Date: 30th September 2024 | Time: 6:00 PM</span>
+                <div class="event-description">
+                    Celebrate the vibrant music culture at VIT! Enjoy performances from student bands, solo artists, and special guests in a night of unforgettable music.
+                </div>
+                <button class="btn-register">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="event-card">
+            <div class="event-header">
+                <h2>Entrepreneurship Panel</h2>
+                <span>Organized by: <span class="club-name">VIT Entrepreneurship Cell</span></span>
+            </div>
+            <div class="event-details">
+                <span>Date: 5th October 2024 | Time: 11:00 AM</span>
+                <div class="event-description">
+                    Network with successful entrepreneurs and learn from their experiences in the world of startups. This panel is a must-attend for aspiring entrepreneurs.
+                </div>
+                <button class="btn-register">Register</button>
+            </div>
+        </div>
+
+        <!-- Add more events as needed -->
+    </div>
+
+    <footer>
+        <p>Powered by VitBuzz. Connecting students to campus life.</p>
+    </footer>
+
+</body>
+</html>

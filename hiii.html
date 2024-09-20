@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitBuzz - Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.3);
+            text-align: center;
+            width: 400px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffcc00;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #eaeaea;
+        }
+
+        .btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff8800;
+            transform: scale(1.05);
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 15px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        .input-container input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 0px 5px #ff6600;
+        }
+
+        .headline {
+            font-size: 22px;
+            margin-top: 15px;
+            color: #ffcc00;
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        .sign-up-link {
+            color: #bbb;
+            margin-top: 20px;
+            display: block;
+        }
+
+        .sign-up-link a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .sign-up-link a:hover {
+            color: #ffe066;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 120px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Full black background */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #333; /* Solid form background */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.4);
+            text-align: center;
+            width: 400px;
+            color: #fff;
+        }
+
+        .modal h2 {
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .modal .input-container input {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .close-modal {
+            color: #ffcc00;
+            font-size: 24px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #ffe066;
+        }
+
+        /* Hover effect for 'Inspired by Vitty' */
+        .inspired-by {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: #333;
+            font-size: 14px;
+            transition: 0.3s ease;
+            opacity: 0;
+        }
+
+        .inspired-by:hover {
+            color: #ffcc00;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="vitbuzz-logo.png" alt="VitBuzz Logo" class="logo">
+    <h1>VitBuzz</h1>
+    <p>Your personalized gateway to campus events. Discover, engage, and elevate your experience at VIT.</p>
+
+    <div class="input-container">
+        <input type="email" placeholder="Enter your email" required>
+    </div>
+    <div class="input-container">
+        <input type="password" placeholder="Enter your password" required>
+    </div>
+
+    <button class="btn" id="loginBtn">Login</button>
+
+    <p class="headline">Getting bored? Join exciting events at VIT now!</p>
+
+    <div class="sign-up-link">
+        New to VitBuzz? <a id="openSignUpModal">Sign Up</a>
+    </div>
+</div>
+
+<!-- Sign-Up Modal -->
+<div id="signUpModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <h2>Create Your Account</h2>
+        <div class="input-container">
+            <input type="text" placeholder="Enter your name" required>
+        </div>
+        <div class="input-container">
+            <input type="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-container">
+            <input type="email" placeholder="Verify your email" required>
+        </div>
+        <div class="input-container">
+            <input type="password" placeholder="Enter your password" required>
+        </div>
+        <button class="btn" id="registerBtn">Register</button>
+    </div>
+</div>
+
+<!-- Inspired by Vitty -->
+<div class="inspired-by">
+    Inspired by the app Vitty
+</div>
+
+<script>
+    // Get modal elements
+    const signUpModal = document.getElementById('signUpModal');
+    const openSignUpModal = document.getElementById('openSignUpModal');
+    const closeModal = document.getElementById('closeModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+
+    // Open the sign-up modal when clicking the Sign-Up link
+    openSignUpModal.onclick = function() {
+        signUpModal.style.display = 'flex';
+    };
+
+    // Close the modal when clicking the close icon
+    closeModal.onclick = function() {
+        signUpModal.style.display = 'none';
+    };
+
+    // Close modal if clicking outside the modal content
+    window.onclick = function(event) {
+        if (event.target == signUpModal) {
+            signUpModal.style.display = 'none';
+        }
+    };
+
+    // Redirect to events page on login
+    loginBtn.onclick = function() {
+        // You can add logic here to check if the user is valid
+        window.location.href = 'home.html';
+    };
+
+    // Redirect to events page on register
+    registerBtn.onclick = function() {
+        // You can add logic here to create the account
+        window.location.href = 'home.html';
+    };
+</script>
+
+</body>
+</html>
