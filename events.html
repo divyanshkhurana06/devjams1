@@ -15,7 +15,7 @@
             color: #fff;
         }
 
-        /* Navbar */
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -34,8 +34,8 @@
         }
 
         .logo-img {
-            height: 40px; /* Adjust height as needed */
-            margin-right: 10px; /* Space between logo and text */
+            height: 40px; 
+            margin-right: 10px; 
         }
         .navbar .logo {
             font-size: 24px;
@@ -73,13 +73,17 @@
             z-index: 1;
         }
 
-        .header h1 {
-            color: #ffcc00;
-            font-size: 36px;
-            margin: 0;
+        .header {
+            background-color: #121212;
+            padding: 80px 20px 20px; 
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
 
-        /* Filter button */
+        
         .filter-container {
             text-align: center;
             margin-top: 100px;
@@ -101,7 +105,7 @@
             background-color: #ff8800;
         }
 
-        /* Events styling */
+        
         .events-container {
             display: flex;
             flex-direction: column;
@@ -163,24 +167,24 @@
         footer {
     margin-top: 40px;
     text-align: center;
-    color: #f0ebeb; /* Change this to a lighter color if needed */
+    color: #f0ebeb; 
     font-size: 14px;
     }
 
     footer a {
-        color: #ffcc00; /* Change link color to match your theme */
-        text-decoration: none; /* Remove underline */
-        transition: color 0.3s; /* Smooth transition for hover effect */
+        color: #ffcc00; 
+        text-decoration: none; 
+        transition: color 0.3s; 
     }
 
     footer a:hover {
-        color: #ff6600; /* Change link color on hover */
+        color: #ff6600; 
     }
 
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+   
     <div class="navbar">
         <div class="logo">
             <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
@@ -193,13 +197,13 @@
         </ul>
     </div>
 
-    <!-- Header -->
+    
     <div class="header">
-        <h1>VitBuzz Events</h1>
+        <h1>Upcoming Events</h1>
         <p>Inspired by Vitty</p>
     </div>
 
-    <!-- Events Container -->
+    
     <div class="events-container">
         <!-- Event 1 -->
         <div class="event-card" data-days="5">
@@ -338,12 +342,12 @@
     </footer>
 
     <script>
-        // Function to register an event
+        
         function registerEvent(name, date) {
-            // Get existing registered events from localStorage
+            
             let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
             
-            // Add the new event if it's not already registered
+            
             if (!events.some(event => event.name === name && event.date === date)) {
                 events.push({ name, date });
                 localStorage.setItem('registeredEvents', JSON.stringify(events));

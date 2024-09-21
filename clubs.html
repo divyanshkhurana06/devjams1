@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitBuzz - Clubs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 200;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #f0f0f0;
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Info Icon */
+        .info-icon {
+            position: fixed;
+            top: 90px;
+            right: 25px;
+            cursor: pointer;
+            font-size: 24px;
+            color: #ffcc00;
+            z-index: 300; /* Ensure it's on top */
+            background-color: rgba(0, 0, 0, 0.7); /* Optional: Add background for visibility */
+            border-radius: 50%; /* Optional: Make it round */
+            padding: 10px; /* Optional: Add some padding */
+        }
+
+        /* Popup Box */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1a1a1a;
+            padding: 20px;
+            border: 1px solid #ffcc00;
+            border-radius: 8px;
+            z-index: 300;
+        }
+
+        .popup p {
+            margin-bottom: 10px;
+        }
+
+        .popup button {
+            padding: 8px 12px;
+            background-color: #ffcc00;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Clubs Section */
+        .clubs-container {
+            padding: 100px 20px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .club-column {
+            display: flex;
+            background-color: #1c1c1c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+            align-items: center;
+        }
+
+        .club-column:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .club-image {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .club-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .club-info {
+            flex: 2;
+            margin-left: 20px;
+        }
+
+        .club-info h3 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .club-info p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .club-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .club-links a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .club-links a:hover {
+            color: #fff;
+        }
+
+        /* Scrollbar styling */
+        .clubs-container {
+            scrollbar-width: thin;
+            scrollbar-color: #ffcc00 #1a1a1a;
+        }
+
+        .clubs-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .clubs-container::-webkit-scrollbar-thumb {
+            background-color: #ffcc00;
+            border-radius: 10px;
+        }
+
+        .clubs-container::-webkit-scrollbar-track {
+            background-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="home.html">
+                <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+            </a>
+            <div class="logo-text">VitBuzz</div>
+        </div>
+        <ul>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="article.html">Articles</a></li>
+        </ul>
+    </div>
+
+    <!-- Info Icon -->
+    <div class="info-icon" onclick="showPopup()">&#9432;</div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <p>To register as a club, email us at <strong>club.registration@vitbuzz.com</strong> to get verified and post about your events!</p>
+        <button onclick="hidePopup()">Close</button>
+    </div>
+
+    <!-- Clubs Section -->
+    <section class="clubs-container">
+        <!-- Club 1 -->
+        <div class="club-column">
+            <div class="club-image">
+                <img src="gdsc-club.jpg" alt="GDSC Club">
+            </div>
+            <div class="club-info">
+                <h3>GDSC - Google Developer Student Club</h3>
+                <p>Google Developer Student Club at VIT is a community group for students interested in growing as developers, sharing ideas, and learning about the latest Google technologies.</p>
+                <div class="club-links">
+                    <a href="https://instagram.com/gdscvit" target="_blank">Instagram</a>
+                    <a href="https://twitter.com/gdscvit" target="_blank">Twitter</a>
+                    <a href="https://linkedin.com/in/gdscvit" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Club 2 -->
+        <div class="club-column">
+            <div class="club-image">
+                <img src="ieee-club.jpg" alt="IEEE Club">
+            </div>
+            <div class="club-info">
+                <h3>IEEE VIT</h3>
+                <p>IEEE VIT is dedicated to the advancement of technology and innovation through workshops, projects, and networking events.</p>
+                <div class="club-links">
+                    <a href="https://instagram.com/ieeevit" target="_blank">Instagram</a>
+                    <a href="https://twitter.com/ieeevit" target="_blank">Twitter</a>
+                    <a href="https://linkedin.com/in/ieeevit" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Club 3 -->
+        <div class="club-column">
+            <div class="club-image">
+                <img src="acm-club.jpg" alt="ACM Club">
+            </div>
+            <div class="club-info">
+                <h3>ACM VIT</h3>
+                <p>ACM VIT is a student chapter that fosters computing, problem-solving, and networking skills through competitions and events.</p>
+                <div class="club-links">
+                    <a href="https://instagram.com/acmvit" target="_blank">Instagram</a>
+                    <a href="https://twitter.com/acmvit" target="_blank">Twitter</a>
+                    <a href="https://linkedin.com/in/acmvit" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Club 4 -->
+        <div class="club-column">
+            <div class="club-image">
+                <img src="codechef-club.jpg" alt="CodeChef Club">
+            </div>
+            <div class="club-info">
+                <h3>CodeChef VIT</h3>
+                <p>CodeChef VIT is focused on competitive programming and coding challenges, with a mission to enhance problem-solving skills.</p>
+                <div class="club-links">
+                    <a href="https://instagram.com/codechefvit" target="_blank">Instagram</a>
+                    <a href="https://twitter.com/codechefvit" target="_blank">Twitter</a>
+                    <a href="https://linkedin.com/in/codechefvit" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
