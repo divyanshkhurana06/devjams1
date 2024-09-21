@@ -15,6 +15,54 @@
             color: #fff;
         }
 
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 200;
+            background-color: #1a1a1a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px; /* Adjust height as needed */
+            margin-right: 10px; /* Space between logo and text */
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+            margin-left: 20px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #f0f0f0;
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc00;
+        }
+
         .header {
             background-color: #121212;
             padding: 20px;
@@ -31,6 +79,29 @@
             margin: 0;
         }
 
+        /* Filter button */
+        .filter-container {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 20px;
+        }
+
+        .filter-button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s ease;
+        }
+
+        .filter-button:hover {
+            background-color: #ff8800;
+        }
+
+        /* Events styling */
         .events-container {
             display: flex;
             flex-direction: column;
@@ -67,46 +138,9 @@
             color: #ff6600;
         }
 
-        .event-header span {
-            font-size: 14px;
-            color: #bbb;
-        }
-
         .event-details {
             margin-top: 10px;
             color: #eaeaea;
-        }
-
-        .club-name {
-            font-weight: 600;
-            color: #ffcc00;
-        }
-
-        .event-description {
-            margin-top: 10px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Scrollable content */
-        .scrollable {
-            max-height: 80vh;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        /* Scrollbar Styling */
-        .scrollable::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .scrollable::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-
-        .scrollable::-webkit-scrollbar-thumb {
-            background-color: #ffcc00;
-            border-radius: 10px;
         }
 
         .btn-register {
@@ -127,73 +161,197 @@
         }
 
         footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #888;
-            font-size: 14px;
-        }
+    margin-top: 40px;
+    text-align: center;
+    color: #f0ebeb; /* Change this to a lighter color if needed */
+    font-size: 14px;
+    }
+
+    footer a {
+        color: #ffcc00; /* Change link color to match your theme */
+        text-decoration: none; /* Remove underline */
+        transition: color 0.3s; /* Smooth transition for hover effect */
+    }
+
+    footer a:hover {
+        color: #ff6600; /* Change link color on hover */
+    }
 
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <h1>VitBuzz Events</h1>
-        <p>Discover all the amazing events happening at VIT</p>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+            <a href="home.html" style="text-decoration: none; color: #ffcc00;">VitBuzz</a>
+        </div>
+        <ul>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#clubs">Clubs</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
     </div>
 
-    <div class="events-container scrollable">
+    <!-- Header -->
+    <div class="header">
+        <h1>VitBuzz Events</h1>
+        <p>Inspired by Vitty</p>
+    </div>
+
+    <!-- Events Container -->
+    <div class="events-container">
         <!-- Event 1 -->
-        <div class="event-card">
+        <div class="event-card" data-days="5">
             <div class="event-header">
-                <h2>Tech Workshop</h2>
-                <span>Organized by: <span class="club-name">VIT Tech Club</span></span>
+                <h2>GDSC</h2>
+                <span>5 days remaining</span>
             </div>
             <div class="event-details">
-                <span>Date: 25th September 2024 | Time: 10:00 AM</span>
-                <div class="event-description">
-                    Join the VIT Tech Club for an exciting workshop on AI & ML technologies. Learn the basics of neural networks and get hands-on experience with Python libraries like TensorFlow.
-                </div>
-                <button class="btn-register">Register</button>
+                <span>Date: 25th September 2024</span>
+                <p>Join us for an exciting hackathon! Do crazy things that matter.</p>
+                <button class="btn-register" onclick="registerEvent('GDSC', '2024-09-25')">Register</button>
             </div>
         </div>
 
         <!-- Event 2 -->
-        <div class="event-card">
+        <div class="event-card" data-days="10">
             <div class="event-header">
-                <h2>Music Festival</h2>
-                <span>Organized by: <span class="club-name">VIT Music Society</span></span>
+                <h2>Vitty Success Party</h2>
+                <span>10 days remaining</span>
             </div>
             <div class="event-details">
-                <span>Date: 30th September 2024 | Time: 6:00 PM</span>
-                <div class="event-description">
-                    Celebrate the vibrant music culture at VIT! Enjoy performances from student bands, solo artists, and special guests in a night of unforgettable music.
-                </div>
-                <button class="btn-register">Register</button>
+                <span>Date: 30th September 2024</span>
+                <p>Join us for the celebration!</p>
+                <button class="btn-register" onclick="registerEvent('Vitty Success Party', '2024-09-30')">Register</button>
             </div>
         </div>
 
         <!-- Event 3 -->
-        <div class="event-card">
+        <div class="event-card" data-days="15">
             <div class="event-header">
-                <h2>Entrepreneurship Panel</h2>
-                <span>Organized by: <span class="club-name">VIT Entrepreneurship Cell</span></span>
+                <h2>Which is the Best Club?</h2>
+                <span>15 days remaining</span>
             </div>
             <div class="event-details">
-                <span>Date: 5th October 2024 | Time: 11:00 AM</span>
-                <div class="event-description">
-                    Network with successful entrepreneurs and learn from their experiences in the world of startups. This panel is a must-attend for aspiring entrepreneurs.
-                </div>
-                <button class="btn-register">Register</button>
+                <span>Date: 5th October 2024</span>
+                <p>Join us for a day of friendly debate!</p>
+                <button class="btn-register" onclick="registerEvent('Which is the Best Club?', '2024-10-05')">Register</button>
             </div>
         </div>
 
-        <!-- Add more events as needed -->
+        <!-- Event 4 -->
+        <div class="event-card" data-days="20">
+            <div class="event-header">
+                <h2>IEEE Society</h2>
+                <span>20 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 10th October 2024</span>
+                <p>The same scavenger hunt part 1!</p>
+                <button class="btn-register" onclick="registerEvent('IEEE Society', '2024-10-10')">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 5 -->
+        <div class="event-card" data-days="25">
+            <div class="event-header">
+                <h2>Code Chef 2024</h2>
+                <span>25 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 15th October 2024</span>
+                <p>The same scavenger hunt part 2!</p>
+                <button class="btn-register" onclick="registerEvent('Code Chef 2024', '2024-10-15')">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 6 -->
+        <div class="event-card" data-days="27">
+            <div class="event-header">
+                <h2>ACM 2024</h2>
+                <span>27 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 17th October 2024</span>
+                <p>The same scavenger hunt part 404!</p>
+                <button class="btn-register" onclick="registerEvent('ACM 2024', '2024-10-17')">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 7 -->
+        <div class="event-card" data-days="30">
+            <div class="event-header">
+                <h2>Tech Fest 2024</h2>
+                <span>30 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 20th October 2024</span>
+                <p>Tech talks and workshops!</p>
+                <button class="btn-register" onclick="registerEvent('Tech Fest 2024', '2024-10-20')">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 8 -->
+        <div class="event-card" data-days="35">
+            <div class="event-header">
+                <h2>Startup Bootcamp</h2>
+                <span>35 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 25th October 2024</span>
+                <p>Launch your startup idea!</p>
+                <button class="btn-register" onclick="registerEvent('Startup Bootcamp', '2024-10-25')">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 9 -->
+        <div class="event-card" data-days="40">
+            <div class="event-header">
+                <h2>Hackathon 2024</h2>
+                <span>40 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 30th October 2024</span>
+                <p>Join us for an intense 48-hour coding marathon!</p>
+                <button class="btn-register" onclick="registerEvent('Hackathon 2024', '2024-10-30')">Register</button>
+            </div>
+        </div>
+
+        <!-- Event 10 -->
+        <div class="event-card" data-days="45">
+            <div class="event-header">
+                <h2>Final Year Project Showcase</h2>
+                <span>45 days remaining</span>
+            </div>
+            <div class="event-details">
+                <span>Date: 5th November 2024</span>
+                <p>Showcase your final year projects!</p>
+                <button class="btn-register" onclick="registerEvent('Final Year Project Showcase', '2024-11-05')">Register</button>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>Powered by VitBuzz. Connecting students to campus life.</p>
+        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
     </footer>
 
+    <script>
+        // Function to register an event
+        function registerEvent(name, date) {
+            // Get existing registered events from localStorage
+            let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+            
+            // Add the new event if it's not already registered
+            if (!events.some(event => event.name === name && event.date === date)) {
+                events.push({ name, date });
+                localStorage.setItem('registeredEvents', JSON.stringify(events));
+                alert(`${name} has been registered!`);
+            } else {
+                alert(`You have already registered for ${name}.`);
+            }
+        }
+    </script>
 </body>
 </html>

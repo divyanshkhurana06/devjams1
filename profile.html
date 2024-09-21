@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,58 @@
             font-family: 'Montserrat', sans-serif;
             background-color: #121212;
             color: #fff;
-            padding: 20px;
+            padding: 0px;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 200;
+            background-color: #1a1a1a; /* Dark flat background */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Thin subtle border for separation */
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px; /* Adjust height as needed */
+            margin-right: 0px; /* Space between logo and text */
+        }
+        
+        .navbar .logo a {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00; /* Bright yellow logo */
+            margin-left: 20px; /* Adjust for spacing */
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 40px; /* Increased gap for cleaner spacing */
+            margin-right: 20px; /* Adjust for spacing */
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #f0f0f0; /* Slightly off-white text for contrast */
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ffcc00; /* Yellow hover effect */
+            background-color: transparent; /* No background, just color change */
         }
 
         .container {
@@ -84,76 +135,86 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Your Profile</h1>
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+        <a href="home.html" style="text-decoration: none; color: #ffcc00;">VitBuzz</a>
+    </div>
+    <ul>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#clubs">Clubs</a></li>
+        <li><a href="profile.html">Profile</a></li>
+    </ul>
+</div>
 
-        <div class="profile-info">
-            <label for="name">Name:</label>
-            <p id="name">Douglas Adams</p>
-        </div>
+<div class="container">
+    <h1>Your Profile</h1>
 
-        <div class="profile-info">
-            <label for="email">Email:</label>
-            <p id="email">douglas.adams42@example.com</p>
-        </div>
-
-        <div class="event-list">
-            <h2>Events Registered</h2>
-
-            <div class="event-section">
-                <h3>Upcoming Events</h3>
-                <div id="upcoming-events"></div>
-            </div>
-
-            <div class="event-section">
-                <h3>Past Events</h3>
-                <div id="past-events"></div>
-            </div>
-        </div>
+    <div class="profile-info">
+        <label for="name">Name:</label>
+        <p id="name">Douglas Adams</p>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
-        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
+    <div class="profile-info">
+        <label for="email">Email:</label>
+        <p id="email">douglas.adams42@example.com</p>
     </div>
 
-    <script>
-        // Function to load events from localStorage
-        const loadRegisteredEvents = () => {
-            // Get events from localStorage
-            let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+    <div class="event-list">
+        <h2>Events Registered</h2>
 
-            const upcomingEventsContainer = document.getElementById('upcoming-events');
-            const pastEventsContainer = document.getElementById('past-events');
+        <div class="event-section">
+            <h3>Upcoming Events</h3>
+            <div id="upcoming-events"></div>
+        </div>
 
-            // Get today's date
-            const today = new Date();
+        <div class="event-section">
+            <h3>Past Events</h3>
+            <div id="past-events"></div>
+        </div>
+    </div>
+</div>
 
-            // Helper function to create event elements
-            function createEventElement(event) {
-                const eventElement = document.createElement('div');
-                eventElement.classList.add('event');
-                const eventDate = new Date(event.date);
-                eventElement.textContent = `${event.name} - ${eventDate.toDateString()}`;
-                return eventElement;
+<div class="footer">
+    <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+    <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
+</div>
+
+<script>
+    // Function to load events from localStorage
+    const loadRegisteredEvents = () => {
+        let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+
+        const upcomingEventsContainer = document.getElementById('upcoming-events');
+        const pastEventsContainer = document.getElementById('past-events');
+
+        // Get today's date
+        const today = new Date();
+
+        // Helper function to create event elements
+        function createEventElement(event) {
+            const eventElement = document.createElement('div');
+            eventElement.classList.add('event');
+            const eventDate = new Date(event.date);
+            eventElement.textContent = `${event.name} - ${eventDate.toDateString()}`;
+            return eventElement;
+        }
+
+        // Categorize events into past and upcoming
+        events.forEach(event => {
+            const eventDate = new Date(event.date);
+            if (eventDate >= today) {
+                upcomingEventsContainer.appendChild(createEventElement(event));
+            } else {
+                pastEventsContainer.appendChild(createEventElement(event));
             }
+        });
+    };
 
-            // Categorize events into past and upcoming based on today's date
-            events.forEach(event => {
-                const eventDate = new Date(event.date);
-                if (eventDate >= today) {
-                    // Future event
-                    upcomingEventsContainer.appendChild(createEventElement(event));
-                } else {
-                    // Past event
-                    pastEventsContainer.appendChild(createEventElement(event));
-                }
-            });
-        };
-
-        // Load events on page load
-        window.onload = loadRegisteredEvents;
-    </script>
+    // Load events on page load
+    window.onload = loadRegisteredEvents;
+</script>
 
 </body>
 </html>

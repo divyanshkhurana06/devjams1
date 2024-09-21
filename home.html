@@ -32,7 +32,15 @@
             z-index: 100;
             background-color: rgba(0, 0, 0, 0.6);
         }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
 
+        .logo-img {
+            height: 40px; /* Adjust height as needed */
+            margin-right: 10px; /* Space between logo and text */
+        }
         .navbar .logo {
             font-size: 24px;
             font-weight: bold;
@@ -89,21 +97,28 @@
             letter-spacing: 2px;
         }
 
-        .hero .btn {
-            padding: 12px 30px;
+        .hero .btn, .event-card .btn {
+            padding: 15px 35px;
             background-color: #ff6600;
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
         }
 
-        .hero .btn:hover {
+        .hero .btn:hover, .event-card .btn:hover {
             background-color: #ff8800;
+            transform: scale(1.05); /* Slight enlargement on hover */
+            box-shadow: 0 6px 20px rgba(255, 136, 0, 0.5);
         }
 
+        .hero .btn:active, .event-card .btn:active {
+        transform: scale(1.02); /* Slight scale down on click */
+        box-shadow: 0 3px 12px rgba(255, 102, 0, 0.4);
+        }
         /* Hottest Events Section */
         .hottest-events {
             text-align: center;
@@ -142,6 +157,7 @@
         }
 
         /* Interactive Arrows */
+        /* Interactive Arrows */
         .arrow {
             cursor: pointer;
             font-size: 36px;
@@ -164,15 +180,20 @@
         .arrow:hover {
             color: #ffe066;
             background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%) scale(1.2); /* Float and enlarge on hover */
+            width: 50px; /* Increase size */
+            height: 50px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Add a floating shadow effect */
         }
 
         .arrow-left {
-            left: 360px; /* Adjust positioning */
+            left: 25%; /* Move it a bit outside for better floating space */
         }
 
         .arrow-right {
-            right: 370px; /* Adjust positioning */
+            right: 25%;
         }
+
 
         /* Slogan Section */
         .slogan {
@@ -192,6 +213,47 @@
             color: #eaeaea;
             max-width: 800px;
             margin: 0 auto;
+        }
+        /* Our Team Section */
+        .our-team {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #2a2a2a;
+        }
+
+        .our-team h2 {
+            font-size: 36px;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+
+        .team-member {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 200px; /* Set a max width for each team member card */
+            color: #fff;
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .team-description {
+            margin-top: 40px;
+            color: #eaeaea;
+            max-width: 800px; /* Max width for combined description */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Footer */
@@ -218,7 +280,10 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">VitBuzz</div>
+        <div class="logo">
+            <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+            <a href="home.html" style="text-decoration: none; color: #ffcc00;">VitBuzz</a>
+        </div>
         <ul>
             <li><a href="#articles">Articles</a></li>
             <li><a href="#clubs">Clubs</a></li>
@@ -318,6 +383,40 @@
     <section class="slogan">
         <h2>Experience the Best of VIT</h2>
         <p>At VitBuzz, we bring together all the events and activities happening across the campus. Connect with your peers, explore opportunities, and elevate your college experience!</p>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="our-team">
+        <h2>Meet Our Team</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="team-member1.jpg" alt="Team Member 1">
+                <h3>Divyansh Khurana</h3>
+                <p>Project Manager 
+                    "Truly Humble Under God"
+                </p>
+            </div>
+            <div class="team-member">
+                <img src="team-member2.jpg" alt="Team Member 2">
+                <h3>Chitrita Gahlot</h3>
+                <p>Lead Designer
+                    ""
+                </p>
+            </div>
+            <div class="team-member">
+                <img src="team-member3.jpg" alt="Team Member 3">
+                <h3>Nitin Duhan</h3>
+                <p>UI/UX Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="team-member4.jpg" alt="Team Member 4">
+                <h3>Srijani Dasararaju</h3>
+                <p>Lead Developer</p>
+            </div>
+        </div>
+        <div class="team-description">
+            <p>Our dedicated team works tirelessly to ensure you have the best experience at VIT. We're here to support and engage with you through various events and activities.</p>
+        </div>
     </section>
 
     <!-- Footer -->
