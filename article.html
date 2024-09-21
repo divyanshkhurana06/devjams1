@@ -20,42 +20,75 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
+                /* Navbar */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 25px; /* Adjusted padding */
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 100;
-            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 200;
+            background-color: #1a1a1a; /* Darker background for contrast */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
         }
-        .navbar .logo {
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px; /* Adjust height as needed */
+            margin-right: 10px; /* Space between logo and text */
+        }
+
+        .logo-text {
             font-size: 24px;
             font-weight: bold;
-            color: #ffcc00;
+            color: #ffcc00; /* Bright yellow */
+            text-decoration: none
+        }
+
+        .navbar .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00; /* Bright yellow */
         }
 
         .navbar ul {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 40px; /* Adjusted gap */
         }
 
         .navbar ul li a {
             text-decoration: none;
-            color: #fff;
-            font-size: 18px;
+            color: #f0f0f0; /* Light text */
+            font-size: 16px; /* Adjusted font size */
             padding: 8px 15px;
             transition: 0.3s;
         }
 
         .navbar ul li a:hover {
-            background-color: #ff6600;
-            border-radius: 5px;
+            color: #ffcc00; /* Yellow hover */
         }
+
+/* Articles Section */
+        .articles {
+            padding: 100px 20px; /* Add padding to avoid navbar overlap */
+            margin-top: 60px; /* Ensure it doesn’t overlap with the navbar */
+        }
+
+        .articles h2 {
+            font-size: 32px; /* Increased size for visibility */
+            margin-bottom: 30px; /* Space below the title */
+            color: #ffcc00; /* Match the logo color */
+            text-align: center; /* Center align */
+        }
+
+        /* Adjust other styles as needed */
 
         /* Articles Section */
         .articles {
@@ -67,22 +100,43 @@
             background-color: #333;
             border-radius: 8px;
             padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .club:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
         .club h3 {
             color: #ffcc00;
             margin-bottom: 10px;
+            font-size: 28px; /* Increased size */
+        }
+
+        .club-images {
+            display: flex; /* Flexbox for side-by-side images */
+            justify-content: space-between; /* Space between images */
+            margin-bottom: 15px; /* Margin below the images */
         }
 
         .club img {
-            width: 50%;
-            border-radius: 0px;
-            margin-bottom: 15px;
+            width: 48%; /* Adjusted for two images side by side */
+            border-radius: 8px;
         }
 
         .club p {
             color: #eaeaea;
             margin-bottom: 10px;
+            padding: 15px;
+            border: 1px solid #444; /* Added border for a box effect */
+            border-radius: 5px;
+            background-color: #222; /* Darker background for paragraphs */
+            transition: background-color 0.3s;
+        }
+
+        .club p:hover {
+            background-color: #2b2b2b; /* Change background on hover */
         }
 
         /* Footer */
@@ -104,10 +158,15 @@
 
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">VitBuzz</div>
+        <div class="logo">
+            <a href="home.html">
+                <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+            </a>
+            <div class="logo-text">VitBuzz</div>
+        </div>
         <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="articles.html">Articles</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="clubs.html">Clubs</a></li>
             <li><a href="profile.html">Profile</a></li>
         </ul>
     </div>
@@ -118,29 +177,43 @@
 
         <div class="club">
             <h3>GDSC</h3>
-            <img src="gdsc-event.jpg" alt="GDSC Event">
-            <p>Our recent hackathon was a huge success! Students collaborated on innovative projects, showcasing their skills and creativity.</p>
+            <div class="club-images">
+                <img src="gdsc-event.jpg" alt="GDSC Event 1">
+                <img src="gdsc-event1.jpg" alt="GDSC Event 2">
+            </div>
+            <p>
+                The GDSC Hackathon was a resounding success, bringing together talented students from diverse backgrounds to showcase their skills and creativity. Over the course of the event, participants collaborated in teams, developing innovative solutions to real-world challenges. With inspiring workshops and mentorship from experienced professionals, participants were able to enhance their technical abilities and gain valuable insights into the tech industry. The energy in the room was palpable as teams presented their projects, demonstrating not only their technical prowess but also their teamwork and problem-solving skills. The event concluded with an awards ceremony that celebrated the top projects, leaving everyone motivated and eager for future opportunities to innovate and connect. Overall, the GDSC Hackathon not only fostered a spirit of collaboration but also strengthened the community, inspiring participants to continue exploring their passions in technology.
+            </p>
             <p>Date: September 25, 2024</p>
         </div>
 
         <div class="club">
             <h3>IEEE Society</h3>
-            <img src="ieee-event.jpg" alt="IEEE Event">
-            <p>The scavenger hunt was a fun way to engage students and promote teamwork! Here's a glimpse of the activities we enjoyed.</p>
+            <div class="club-images">
+                <img src="ieee-event.jpg" alt="IEEE Event 1">
+                <img src="ieee-event1.jpg" alt="IEEE Event 2">
+            </div>
+            <p>The IEEE Scavenger Hunt was a thrilling success, engaging students in an exciting blend of teamwork, creativity, and competition. Participants raced against the clock to solve clues and complete challenges scattered across the campus, fostering camaraderie and a sense of adventure. The event not only encouraged problem-solving and critical thinking but also allowed students to explore the campus in a fun and interactive way. Teams showcased their ingenuity as they devised unique strategies to tackle each challenge, and the atmosphere was filled with laughter and excitement. As the event wrapped up, participants celebrated their achievements and shared stories of their adventures, solidifying friendships and creating lasting memories. The success of the scavenger hunt exemplified the vibrant spirit of the IEEE community, inspiring everyone to look forward to future events filled with collaboration and exploration.</p>
             <p>Date: September 10, 2024</p>
         </div>
 
         <div class="club">
             <h3>ACM</h3>
-            <img src="acm-event.jpg" alt="ACM Event">
-            <p>Our coding competition brought together the best programmers! Congratulations to all participants for their outstanding performance.</p>
-            <p>Date: Septemnber 17, 2024</p>
+            <div class="club-images">
+                <img src="acm-event.jpg" alt="ACM Event 1">
+                <img src="acm-event1.jpg" alt="ACM Event 2">
+            </div>
+            <p>The ACM Coding Competition was a resounding success, attracting talented coders from across the campus who eagerly showcased their programming skills and problem-solving abilities. Over the course of the event, participants tackled a series of challenging problems designed to test their algorithms and coding proficiency under pressure. The atmosphere was electric, filled with focused energy as teams collaborated and strategized to optimize their solutions. With a mix of seasoned competitors and enthusiastic newcomers, the competition fostered a sense of community and collaboration among participants. Ultimately, the event not only highlighted the technical prowess of the coders but also encouraged networking and friendships, leaving everyone excited for the next opportunity to engage in friendly rivalry and further hone their skills. The success of the ACM Coding Competition reinforced the organization's commitment to promoting coding excellence and innovation within the VIT community.</p>
+            <p>Date: September 17, 2024</p>
         </div>
 
         <div class="club">
             <h3>CodeChef</h3>
-            <img src="codechef-event.jpg" alt="CodeChef Event">
-            <p>The latest contest was a thrilling experience for all participants, with many creative solutions to challenging problems.</p>
+            <div class="club-images">
+                <img src="codechef-event.jpg" alt="CodeChef Event 1">
+                <img src="codechef-event1.jpg" alt="CodeChef Event 2">
+            </div>
+            <p>The Innovation Event hosted by the CodeChef Club was a spectacular success, drawing a diverse group of participants eager to explore creative coding solutions. The event featured a series of workshops and competitions focused on innovative problem-solving and algorithm design, encouraging participants to think outside the box. Teams collaborated intensely, brainstorming and developing unique projects that showcased their technical skills and creativity. The atmosphere was vibrant, filled with discussions and exchanges of ideas that fostered a spirit of collaboration. Not only did participants gain valuable insights from industry experts and experienced mentors, but they also left with a sense of accomplishment and inspiration. The event not only highlighted the talent within the VIT community but also strengthened the CodeChef Club’s role as a hub for innovation and excellence in programming. Overall, the event successfully ignited a passion for coding and innovation, setting a benchmark for future endeavors.</p>
             <p>Date: September 15, 2024</p>
         </div>
     </section>
