@@ -483,6 +483,27 @@
         });
     });
 
+    <div class="event-list" id="eventList"></div>
+
+
+    window.onload = function() {
+        const eventList = document.getElementById('eventList');
+        const events = JSON.parse(localStorage.getItem('events')) || [];
+
+        events.forEach(event => {
+            const eventItem = document.createElement('div');
+            eventItem.className = 'event-item';
+            eventItem.innerHTML = `
+                <h3>${event.name}</h3>
+                <p>Date: ${event.date}</p>
+                <p>Time: ${event.time}</p>
+                <p>Tags: ${event.tags.join(', ')}</p>
+            `;
+            eventList.appendChild(eventItem);
+        });
+    };
+
+
 </script>
 </body>
 </html>

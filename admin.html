@@ -362,6 +362,34 @@
                 alert('Please complete all fields before submitting.');
             }
         };
+        document.getElementById('submitEvent').onclick = function() {
+    if (selectedTags.size < 1) {
+        alert('Please select at least 1 tag.');
+    } else {
+        const eventName = document.querySelector('#eventModal input[type="text"]').value;
+        const eventDate = document.querySelector('#eventModal input[type="date"]').value;
+        const eventTime = document.querySelector('#eventModal input[type="time"]').value;
+
+        if (eventName && eventDate && eventTime) {
+            const newEvent = {
+                name: eventName,
+                date: eventDate,
+                time: eventTime,
+                tags: Array.from(selectedTags)
+            };
+
+            // Store event in localStorage
+            let events = JSON.parse(localStorage.getItem('events')) || [];
+            events.push(newEvent);
+            localStorage.setItem('events', JSON.stringify(events));
+
+            alert('Event set successfully!');
+            eventModal.style.display = 'none';
+        } else {
+            alert('Please complete all fields before submitting.');
+        }
+    }
+};
     </script>
 </body>
 </html>
