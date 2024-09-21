@@ -221,6 +221,29 @@
         <p>&copy; 2024 VitBuzz. All rights reserved.</p>
         <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
     </div>
-
+    <script>
+        // Fetch posts from localStorage and display them
+        window.onload = function() {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    
+            const articlesSection = document.querySelector('.articles');
+    
+            posts.forEach(post => {
+                const article = document.createElement('div');
+                article.classList.add('club');
+    
+                // Article content
+                article.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <div class="club-images">
+                        <img src="${post.image}" alt="${post.title}">
+                    </div>
+                    <p>${post.content}</p>
+                `;
+    
+                articlesSection.appendChild(article);
+            });
+        };
+    </script>
 </body>
 </html>

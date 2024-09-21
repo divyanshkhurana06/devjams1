@@ -29,6 +29,7 @@
         .logo-container {
             cursor: pointer;
         }
+
         .logo {
             display: flex;
             align-items: center;
@@ -38,6 +39,7 @@
             height: 40px; 
             margin-right: 10px; 
         }
+
         .navbar .logo {
             font-size: 24px;
             font-weight: bold;
@@ -179,10 +181,11 @@
 </head>
 <body>
     <header>
-    <div class="navbar">
-        <div class="logo">
-            <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
-            <a href="home.html" style="text-decoration: none; color: #ffcc00;">VitBuzz</a>
+        <div class="navbar">
+            <div class="logo">
+                <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+                <a href="home.html" style="text-decoration: none; color: #ffcc00;">VitBuzz</a>
+            </div>
         </div>
     </header>
 
@@ -239,6 +242,8 @@
                         <div class="tag" data-value="Quiz">Quiz</div>
                         <div class="tag" data-value="Social">Social</div>
                         <div class="tag" data-value="Cryptography">Cryptography</div>
+                        <div class="tag" data-value="Entrepreneurship">Entrepreneurship</div>
+                        <div class="tag" data-value="Innovation">Innovation</div>
                     </div>
                 </div>
                 <button class="btn" id="submitEvent">Set Event</button>
@@ -317,10 +322,45 @@
             }
         };
 
+        // Capture post data and save it in localStorage
         document.getElementById('submitPost').onclick = function() {
-            // Logic to handle the submission of the post
-            alert('Post submitted!');
-            postModal.style.display = 'none';
+            const title = document.querySelector('#postModal input[type="text"]').value;
+            const content = document.querySelector('#postModal textarea').value;
+            const image = document.querySelector('#postModal input[type="file"]').files[0];
+
+            if (title && content && image) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageData = e.target.result;
+
+                    // Create a post object
+                    const post = {
+                        title: title,
+                        content: content,
+                        image: imageData
+                    };
+
+                    // Retrieve existing posts from localStorage
+                    let posts = JSON.parse(localStorage.getItem('posts')) || [];
+
+                    // Add new post to the list
+                    posts.push(post);
+
+                    // Save updated posts array back to localStorage
+                    localStorage.setItem('posts', JSON.stringify(posts));
+
+                    // Reset form and close modal
+                    alert('Post submitted!');
+                    postModal.style.display = 'none';
+                    document.querySelector('#postModal input[type="text"]').value = '';
+                    document.querySelector('#postModal textarea').value = '';
+                    document.querySelector('#postModal input[type="file"]').value = '';
+                };
+
+                reader.readAsDataURL(image); // Convert image file to Base64
+            } else {
+                alert('Please complete all fields before submitting.');
+            }
         };
     </script>
 </body>
