@@ -14,7 +14,6 @@
             padding: 0px;
         }
 
-        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -27,7 +26,7 @@
             background-color: #1a1a1a; 
             border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
@@ -37,7 +36,7 @@
             height: 40px; 
             margin-right: 0px; 
         }
-        
+
         .navbar .logo a {
             font-size: 24px;
             font-weight: bold;
@@ -64,15 +63,19 @@
             color: #ffcc00; 
             background-color: transparent; 
         }
+
         .container {
-        max-width: 600px;
-        margin: 80px auto 0; 
-        background-color: #1c1c1c; 
-        border-radius: 8px;
-        padding: 30px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        position: relative; 
-        z-index: 1; 
+            max-width: 600px;
+            margin: 80px auto 0; 
+            background-color: #1c1c1c; 
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative; 
+            z-index: 1; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
         }
 
         h1 {
@@ -105,6 +108,38 @@
             margin-bottom: 10px;
         }
 
+        /* Tags Section */
+        .tags-section {
+            margin-top: 20px;
+        }
+
+        .tags-section h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .tag-box {
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -122,20 +157,9 @@
             color: #faf8f1;
             font-size: 13.4px;
         }
-
-        
-        .event-section {
-            margin-top: 20px;
-        }
-
-        .event-section h3 {
-            color: #ffcc00;
-            margin-bottom: 15px;
-        }
     </style>
 </head>
 <body>
-
 
 <div class="navbar">
     <div class="logo">
@@ -177,6 +201,12 @@
             <div id="past-events"></div>
         </div>
     </div>
+
+    <div class="tags-section">
+        <h3>Selected Tags</h3>
+        <div id="selected-tags" class="tags-container"></div>
+        <button onclick="location.href='middle.html'">Change Tags</button>
+    </div>
 </div>
 
 <div class="footer">
@@ -185,17 +215,15 @@
 </div>
 
 <script>
-    
     const loadRegisteredEvents = () => {
         let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
 
         const upcomingEventsContainer = document.getElementById('upcoming-events');
         const pastEventsContainer = document.getElementById('past-events');
+        const selectedTagsContainer = document.getElementById('selected-tags');
 
-    
         const today = new Date();
 
-       
         function createEventElement(event) {
             const eventElement = document.createElement('div');
             eventElement.classList.add('event');
@@ -204,7 +232,6 @@
             return eventElement;
         }
 
-        
         events.forEach(event => {
             const eventDate = new Date(event.date);
             if (eventDate >= today) {
@@ -213,9 +240,17 @@
                 pastEventsContainer.appendChild(createEventElement(event));
             }
         });
+
+        // Load selected tags
+        const selectedTags = JSON.parse(localStorage.getItem('selectedTags')) || [];
+        selectedTags.forEach(tag => {
+            const tagElement = document.createElement('div');
+            tagElement.classList.add('tag-box');
+            tagElement.textContent = tag;
+            selectedTagsContainer.appendChild(tagElement);
+        });
     };
 
-    
     window.onload = loadRegisteredEvents;
 </script>
 

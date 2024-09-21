@@ -230,7 +230,6 @@
     </div>
 </div>
 
-
 <div id="signUpModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" id="closeModal">&times;</span>
@@ -248,6 +247,7 @@
             <input type="password" placeholder="Enter your password" required>
         </div>
         <button class="btn" id="registerBtn">Register</button>
+        <button class="btn" id="clubRegisterBtn">Register as a Club</button>
     </div>
 </div>
 
@@ -263,6 +263,11 @@
     const closeModal = document.getElementById('closeModal');
     const loginBtn = document.getElementById('loginBtn');
     const registerBtn = document.getElementById('registerBtn');
+    const clubRegisterBtn = document.getElementById('clubRegisterBtn');
+
+    clubRegisterBtn.onclick = function() {
+        window.location.href = 'admin.html';
+    };
 
     
     openSignUpModal.onclick = function() {

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Interests - VitBuzz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            width: 100%;
+            top: 0;
+            background-color: #1a1a1a;
+            position: fixed;
+            z-index: 200;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .container {
+            margin-top: 80px;
+            padding: 20px;
+            background-color: #ff6600;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .tag-box {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 15px;
+            width: 150px;
+            text-align: center;
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .tag-box.selected {
+            background-color: #ffcc00;
+            color: #000;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #000;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="home.html">
+                <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
+            </a>
+            <div class="logo-text">VitBuzz</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Select Your Interests</h1>
+        <p>Please choose exactly 3 fields:</p>
+        <form id="interests-form">
+            <div class="tags-container">
+                <div class="tag-box" data-value="Gaming">Gaming</div>
+                <div class="tag-box" data-value="Tech">Tech</div>
+                <div class="tag-box" data-value="Hackathon">Hackathon</div>
+                <div class="tag-box" data-value="Debate">Debate</div>
+                <div class="tag-box" data-value="Sports">Sports</div>
+                <div class="tag-box" data-value="Music">Music</div>
+                <div class="tag-box" data-value="Dance">Dance</div>
+                <div class="tag-box" data-value="Coding">Coding</div>
+                <div class="tag-box" data-value="AI">AI</div>
+                <div class="tag-box" data-value="Hacking">Hacking</div>
+                <div class="tag-box" data-value="Filmmaking">Filmmaking</div>
+                <div class="tag-box" data-value="Quiz">Quiz</div>
+                <div class="tag-box" data-value="Social">Social</div>
+                <div class="tag-box" data-value="Hunt">Hunt</div>
+                <div class="tag-box" data-value="Food">Food</div>
+                <div class="tag-box" data-value="Cryptography">Cryptography</div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const tags = document.querySelectorAll('.tag-box');
+        const form = document.getElementById('interests-form');
+        let selectedTags = [];
+    
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                const value = tag.getAttribute('data-value');
+    
+                if (tag.classList.contains('selected')) {
+                    // Deselect tag
+                    tag.classList.remove('selected');
+                    selectedTags = selectedTags.filter(tagValue => tagValue !== value);
+                } else {
+                    // Check if already selected 3 tags
+                    if (selectedTags.length < 3) {
+                        tag.classList.add('selected');
+                        selectedTags.push(value);
+                    } else {
+                        alert('You can only select exactly 3 interests.');
+                    }
+                }
+            });
+        });
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting
+    
+            if (selectedTags.length !== 3) {
+                alert('Please select exactly 3 interests.');
+            } else {
+                // Save selected tags to localStorage
+                localStorage.setItem('selectedTags', JSON.stringify(selectedTags));
+                
+                // Redirect to home.html if exactly 3 interests are selected
+                window.location.href = 'home.html';
+            }
+        });
+    </script>
+</body>
+</html>
