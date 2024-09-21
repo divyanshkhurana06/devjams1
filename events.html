@@ -242,12 +242,12 @@
     </div>
 
     <div class="filter-container">
-        <button class="filter-button" onclick="openModal()">Sort Events</button>
+        <button class="filter-button" onclick="openModal()">Filter Events</button>
     </div>
 
     <div class="events-container" id="eventsContainer">
-        <!-- Event 1 -->
-        <div class="event-card" data-days="5" data-tags='["Tech", "AI", "Hackathon"]'>
+         <!-- Event 1 -->
+         <div class="event-card" data-days="5" data-tags='["Tech", "AI", "Hackathon"]'>
             <div class="event-header">
                 <h2>GDSC</h2>
                 <span>5 days remaining</span>
@@ -377,134 +377,109 @@
         </div>
     </div>
 </div>
+    <div class="modal" id="filterModal">
+        <div class="modal-content">
+            <h2>Filter Events by Tags</h2>
+            <div>
+                <label><input type="checkbox" class="filter-tag" value="Gaming"> Gaming</label>
+                <label><input type="checkbox" class="filter-tag" value="Tech"> Tech</label>
+                <label><input type="checkbox" class="filter-tag" value="Hackathon"> Hackathon</label>
+                <label><input type="checkbox" class="filter-tag" value="Social"> Social</label>
+                <label><input type="checkbox" class="filter-tag" value="Debate"> Debate</label>
+                <label><input type="checkbox" class="filter-tag" value="Hunt"> Hunt</label>
+                <label><input type="checkbox" class="filter-tag" value="Cryptography"> Cryptography</label>
+                <label><input type="checkbox" class="filter-tag" value="Sports"> Sports</label>
+                <label><input type="checkbox" class="filter-tag" value="Music"> Music</label>
+                <label><input type="checkbox" class="filter-tag" value="Dance"> Dance</label>
+                <label><input type="checkbox" class="filter-tag" value="Coding"> Coding</label>
+                <label><input type="checkbox" class="filter-tag" value="AI"> AI</label>
+                <label><input type="checkbox" class="filter-tag" value="Filmmaking"> Filmmaking</label>
+                <label><input type="checkbox" class="filter-tag" value="Quiz"> Quiz</label>
+                <label><input type="checkbox" class="filter-tag" value="Hacking"> Hacking</label>
+                <label><input type="checkbox" class="filter-tag" value="Innovation"> Innovation</label>
+                <label><input type="checkbox" class="filter-tag" value="Entrepreneurship"> Entrepreneurship</label>
+                <label><input type="checkbox" class="filter-tag" value="Food"> Food</label>
 
-<div class="modal" id="filterModal">
-    <div class="modal-content">
-        <h2>Filter Events by Tags</h2>
-        <div>
-            <label><input type="checkbox" class="filter-tag" value="Gaming"> Gaming</label>
-            <label><input type="checkbox" class="filter-tag" value="Tech"> Tech</label>
-            <label><input type="checkbox" class="filter-tag" value="Hackathon"> Hackathon</label>
-            <label><input type="checkbox" class="filter-tag" value="Debate"> Debate</label>
-            <label><input type="checkbox" class="filter-tag" value="Sports"> Sports</label>
-            <label><input type="checkbox" class="filter-tag" value="Music"> Music</label>
-            <label><input type="checkbox" class="filter-tag" value="Dance"> Dance</label>
-            <label><input type="checkbox" class="filter-tag" value="Coding"> Coding</label>
-            <label><input type="checkbox" class="filter-tag" value="AI"> AI</label>
-            <label><input type="checkbox" class="filter-tag" value="Hacking"> Hacking</label>
-            <label><input type="checkbox" class="filter-tag" value="Filmmaking"> Filmmaking</label>
-            <label><input type="checkbox" class="filter-tag" value="Quiz"> Quiz</label>
-            <label><input type="checkbox" class="filter-tag" value="Social"> Social</label>
-            <label><input type="checkbox" class="filter-tag" value="Hunt"> Hunt</label>
-            <label><input type="checkbox" class="filter-tag" value="Food"> Food</label>
-            <label><input type="checkbox" class="filter-tag" value="Cryptography"> Cryptography</label>
-            <label><input type="checkbox" class="filter-tag" value="Entrepreneurship"> Entrepreneurship</label>
-            <label><input type="checkbox" class="filter-tag" value="Innovation"> Innovation</label>
+            </div>
+            <button class="modal-button" onclick="filterEvents()">Filter</button>
+            <button class="close-modal" onclick="closeModal()">Close</button>
         </div>
-        <button class="modal-button" onclick="filterEvents()">Filter</button>
-        <button class="close-modal" onclick="closeModal()">Close</button>
     </div>
-</div>
 
-<footer>
-    <p>&copy; 2024 VitBuzz. All rights reserved.</p>
-    <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
-</footer>
+    <footer>
+        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
+    </footer>
 
-<script>
-    function openModal() {
-        document.getElementById('filterModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('filterModal').style.display = 'none';
-    }
-
-    function sortEvents(order) {
-        const container = document.getElementById('eventsContainer');
-        const events = Array.from(container.getElementsByClassName('event-card'));
-        events.sort((a, b) => {
-            const daysA = parseInt(a.getAttribute('data-days'), 10);
-            const daysB = parseInt(b.getAttribute('data-days'), 10);
-            return order === 'asc' ? daysA - daysB : daysB - daysA;
-        });
-        container.innerHTML = '';
-        events.forEach(event => container.appendChild(event));
-        closeModal();  
-    }
-
-    function filterEvents() {
-        const selectedTags = Array.from(document.querySelectorAll('.filter-tag:checked')).map(tag => tag.value);
-        const container = document.getElementById('eventsContainer');
-        const events = Array.from(container.getElementsByClassName('event-card'));
-
-        events.forEach(event => {
-            const tags = JSON.parse(event.getAttribute('data-tags'));
-            if (selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag))) {
-                event.style.display = 'block';
-            } else {
-                event.style.display = 'none';
-            }
-        });
-        closeModal();
-    }
-
-    function registerEvent(name, date) {
-        let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
-        if (!events.some(event => event.name === name && event.date === date)) {
-            events.push({ name, date });
-            localStorage.setItem('registeredEvents', JSON.stringify(events));
-            alert(`${name} has been registered!`);
-        } else {
-            alert(`You have already registered for ${name}.`);
+    <script>
+        function openModal() {
+            document.getElementById('filterModal').style.display = 'flex';
+            preSelectTags();
         }
-    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const eventsContainer = document.getElementById('eventsContainer');
-        const events = JSON.parse(localStorage.getItem('events')) || [];
+        function closeModal() {
+            document.getElementById('filterModal').style.display = 'none';
+        }
 
-        events.forEach(event => {
-            const eventCard = document.createElement('div');
-            eventCard.classList.add('event-card');
-            eventCard.setAttribute('data-days', event.days);
-            eventCard.innerHTML = `
-                <div class="event-header">
-                    <h2>${event.name}</h2>
-                    <span>${event.days} days remaining</span>
-                </div>
-                <div class="event-details">
-                    <span>Date: ${event.date}</span>
-                    <p>${event.description}</p>
-                    <button class="btn-register" onclick="registerEvent('${event.name}', '${event.date}')">Register</button>
-                </div>
-            `;
-            eventsContainer.appendChild(eventCard);
+        function preSelectTags() {
+            const selectedTags = JSON.parse(localStorage.getItem('selectedTags')) || [];
+            const checkboxes = document.querySelectorAll('.filter-tag');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectedTags.includes(checkbox.value);
+            });
+        }
+
+        function filterEvents() {
+            const selectedTags = Array.from(document.querySelectorAll('.filter-tag:checked')).map(tag => tag.value);
+            const container = document.getElementById('eventsContainer');
+            const events = Array.from(container.getElementsByClassName('event-card'));
+
+            events.forEach(event => {
+                const tags = JSON.parse(event.getAttribute('data-tags'));
+                if (selectedTags.length === 0 || selectedTags.some(tag => tags.includes(tag))) {
+                    event.style.display = 'block';
+                } else {
+                    event.style.display = 'none';
+                }
+            });
+            closeModal();
+        }
+
+        function registerEvent(name, date) {
+            let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+            if (!events.some(event => event.name === name && event.date === date)) {
+                events.push({ name, date });
+                localStorage.setItem('registeredEvents', JSON.stringify(events));
+                alert(`${name} has been registered!`);
+            } else {
+                alert(`You have already registered for ${name}.`);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const eventsContainer = document.getElementById('eventsContainer');
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+
+            events.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.classList.add('event-card');
+                eventCard.setAttribute('data-days', event.days);
+                eventCard.setAttribute('data-tags', JSON.stringify(event.tags));
+                eventCard.innerHTML = `
+                    <div class="event-header">
+                        <h2>${event.name}</h2>
+                        <span>${event.days} days remaining</span>
+                    </div>
+                    <div class="event-details">
+                        <span>Date: ${event.date}</span>
+                        <p>${event.description}</p>
+                        <button class="btn-register" onclick="registerEvent('${event.name}', '${event.date}')">Register</button>
+                    </div>
+                `;
+                eventsContainer.appendChild(eventCard);
+            });
         });
-    });
-
-    <div class="event-list" id="eventList"></div>
-
-
-    window.onload = function() {
-        const eventList = document.getElementById('eventList');
-        const events = JSON.parse(localStorage.getItem('events')) || [];
-
-        events.forEach(event => {
-            const eventItem = document.createElement('div');
-            eventItem.className = 'event-item';
-            eventItem.innerHTML = `
-                <h3>${event.name}</h3>
-                <p>Date: ${event.date}</p>
-                <p>Time: ${event.time}</p>
-                <p>Tags: ${event.tags.join(', ')}</p>
-            `;
-            eventList.appendChild(eventItem);
-        });
-    };
-
-
-</script>
+    </script>
 </body>
 </html>
-
