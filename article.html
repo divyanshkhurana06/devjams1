@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitBuzz - Club Articles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ff6600;
+            border-radius: 5px;
+        }
+
+        /* Articles Section */
+        .articles {
+            padding: 100px 20px; /* Add padding to avoid navbar overlap */
+        }
+
+        .club {
+            margin-bottom: 40px;
+            background-color: #333;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .club h3 {
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        .club img {
+            width: 50%;
+            border-radius: 0px;
+            margin-bottom: 15px;
+        }
+
+        .club p {
+            color: #eaeaea;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000;
+            text-align: center;
+            padding: 20px;
+            color: #bbb;
+        }
+
+        .footer a {
+            color: #f8f8f5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">VitBuzz</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </div>
+
+    <!-- Articles Section -->
+    <section class="articles">
+        <h2>Club Highlights</h2>
+
+        <div class="club">
+            <h3>GDSC</h3>
+            <img src="gdsc-event.jpg" alt="GDSC Event">
+            <p>Our recent hackathon was a huge success! Students collaborated on innovative projects, showcasing their skills and creativity.</p>
+            <p>Date: September 25, 2024</p>
+        </div>
+
+        <div class="club">
+            <h3>IEEE Society</h3>
+            <img src="ieee-event.jpg" alt="IEEE Event">
+            <p>The scavenger hunt was a fun way to engage students and promote teamwork! Here's a glimpse of the activities we enjoyed.</p>
+            <p>Date: September 10, 2024</p>
+        </div>
+
+        <div class="club">
+            <h3>ACM</h3>
+            <img src="acm-event.jpg" alt="ACM Event">
+            <p>Our coding competition brought together the best programmers! Congratulations to all participants for their outstanding performance.</p>
+            <p>Date: Septemnber 17, 2024</p>
+        </div>
+
+        <div class="club">
+            <h3>CodeChef</h3>
+            <img src="codechef-event.jpg" alt="CodeChef Event">
+            <p>The latest contest was a thrilling experience for all participants, with many creative solutions to challenging problems.</p>
+            <p>Date: September 15, 2024</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
+    </div>
+
+</body>
+</html>
