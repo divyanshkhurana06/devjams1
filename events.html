@@ -15,7 +15,6 @@
             color: #fff;
         }
 
-        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -28,6 +27,7 @@
             background-color: #1a1a1a;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         .logo {
             display: flex;
             align-items: center;
@@ -37,6 +37,7 @@
             height: 40px; 
             margin-right: 10px; 
         }
+
         .navbar .logo {
             font-size: 24px;
             font-weight: bold;
@@ -65,25 +66,15 @@
 
         .header {
             background-color: #121212;
-            padding: 20px;
+            padding: 100px 20px 10px; 
             text-align: center;
+            color: #da8c10;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
             position: sticky;
             top: 0;
             z-index: 1;
         }
 
-        .header {
-            background-color: #121212;
-            padding: 80px 20px 20px; 
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        
         .filter-container {
             text-align: center;
             margin-top: 100px;
@@ -105,7 +96,6 @@
             background-color: #ff8800;
         }
 
-        
         .events-container {
             display: flex;
             flex-direction: column;
@@ -165,22 +155,71 @@
         }
 
         footer {
-    margin-top: 40px;
-    text-align: center;
-    color: #f0ebeb; 
-    font-size: 14px;
-    }
+            margin-top: 40px;
+            text-align: center;
+            color: #f0ebeb; 
+            font-size: 14px;
+        }
 
-    footer a {
-        color: #ffcc00; 
-        text-decoration: none; 
-        transition: color 0.3s; 
-    }
+        footer a {
+            color: #ffcc00; 
+            text-decoration: none; 
+            transition: color 0.3s; 
+        }
 
-    footer a:hover {
-        color: #ff6600; 
-    }
+        footer a:hover {
+            color: #ff6600; 
+        }
 
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .modal-button {
+            background-color: #ff6600;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background-color: #ff8800;
+        }
+
+        .close-modal {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .close-modal:hover {
+            background-color: #ff4444;
+        }
     </style>
 </head>
 <body>
@@ -197,14 +236,17 @@
         </ul>
     </div>
 
-    
     <div class="header">
         <h1>Upcoming Events</h1>
         <p>Inspired by Vitty</p>
     </div>
 
-    
-    <div class="events-container">
+    <div class="filter-container">
+        <button class="filter-button" onclick="openModal()">Sort Events</button>
+    </div>
+
+
+    <div class="events-container" id="eventsContainer">
         <!-- Event 1 -->
         <div class="event-card" data-days="5">
             <div class="event-header">
@@ -335,6 +377,16 @@
             </div>
         </div>
     </div>
+    
+
+    <div class="modal" id="filterModal">
+        <div class="modal-content">
+            <h2>Sort Events by Days Remaining</h2>
+            <button class="modal-button" onclick="sortEvents('asc')">Low to High</button>
+            <button class="modal-button" onclick="sortEvents('desc')">High to Low</button>
+            <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 VitBuzz. All rights reserved.</p>
@@ -343,11 +395,42 @@
 
     <script>
         
+        function openModal() {
+            document.getElementById('filterModal').style.display = 'flex';
+        }
+
+       
+        function closeModal() {
+            document.getElementById('filterModal').style.display = 'none';
+        }
+
+        
+        function sortEvents(order) {
+            const container = document.getElementById('eventsContainer');
+            const events = Array.from(container.getElementsByClassName('event-card'));
+            
+            
+            events.sort((a, b) => {
+                const daysA = parseInt(a.getAttribute('data-days'), 10);
+                const daysB = parseInt(b.getAttribute('data-days'), 10);
+
+                if (order === 'asc') {
+                    return daysA - daysB;
+                } else {
+                    return daysB - daysA;
+                }
+            });
+
+            
+            container.innerHTML = '';
+            events.forEach(event => container.appendChild(event));
+
+            closeModal();  
+        }
+
         function registerEvent(name, date) {
-            
             let events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
-            
-            
+
             if (!events.some(event => event.name === name && event.date === date)) {
                 events.push({ name, date });
                 localStorage.setItem('registeredEvents', JSON.stringify(events));

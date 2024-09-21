@@ -146,7 +146,7 @@
             width: 120px;
         }
 
-        /* Modal Styles */
+        
         .modal {
             display: none;
             position: fixed;
@@ -155,13 +155,13 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Full black background */
+            background-color: rgba(0, 0, 0, 0.9); 
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: #333; /* Solid form background */
+            background-color: #333;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.4);
@@ -190,7 +190,7 @@
             color: #ffe066;
         }
 
-        /* Hover effect for 'Inspired by Vitty' */
+        
         .inspired-by {
             position: fixed;
             bottom: 10px;
@@ -230,7 +230,7 @@
     </div>
 </div>
 
-<!-- Sign-Up Modal -->
+
 <div id="signUpModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" id="closeModal">&times;</span>
@@ -251,48 +251,52 @@
     </div>
 </div>
 
-<!-- Inspired by Vitty -->
+
 <div class="inspired-by">
     Inspired by the app Vitty
 </div>
 
 <script>
-    // Get modal elements
+    
     const signUpModal = document.getElementById('signUpModal');
     const openSignUpModal = document.getElementById('openSignUpModal');
     const closeModal = document.getElementById('closeModal');
     const loginBtn = document.getElementById('loginBtn');
     const registerBtn = document.getElementById('registerBtn');
 
-    // Open the sign-up modal when clicking the Sign-Up link
+    
     openSignUpModal.onclick = function() {
         signUpModal.style.display = 'flex';
     };
 
-    // Close the modal when clicking the close icon
+   
     closeModal.onclick = function() {
         signUpModal.style.display = 'none';
     };
 
-    // Close modal if clicking outside the modal content
+    
     window.onclick = function(event) {
         if (event.target == signUpModal) {
             signUpModal.style.display = 'none';
         }
     };
 
-    // Redirect to events page on login
+    
     loginBtn.onclick = function() {
-        // You can add logic here to check if the user is valid
+       
         window.location.href = 'home.html';
     };
 
-    // Redirect to events page on register
+    
     registerBtn.onclick = function() {
-        // You can add logic here to create the account
+        
         window.location.href = 'home.html';
     };
 </script>
 
 </body>
 </html>
+
+
+
+

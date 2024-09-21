@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -38,8 +38,8 @@
         }
 
         .logo-img {
-            height: 40px; /* Adjust height as needed */
-            margin-right: 10px; /* Space between logo and text */
+            height: 40px; 
+            margin-right: 10px; 
         }
         .navbar .logo {
             font-size: 24px;
@@ -71,7 +71,7 @@
             color: #fff;
         }
 
-        /* Hero Section */
+        
         .hero {
             height: 100vh;
             background: url('vitbuzz-bg.jpg') no-repeat center center/cover;
@@ -111,15 +111,15 @@
 
         .hero .btn:hover, .event-card .btn:hover {
             background-color: #ff8800;
-            transform: scale(1.05); /* Slight enlargement on hover */
+            transform: scale(1.05); 
             box-shadow: 0 6px 20px rgba(255, 136, 0, 0.5);
         }
 
         .hero .btn:active, .event-card .btn:active {
-        transform: scale(1.02); /* Slight scale down on click */
+        transform: scale(1.02); 
         box-shadow: 0 3px 12px rgba(255, 102, 0, 0.4);
         }
-        /* Hottest Events Section */
+      
         .hottest-events {
             text-align: center;
             padding: 80px 20px;
@@ -146,7 +146,7 @@
             margin: 20px auto;
             max-width: 600px;
             text-align: left;
-            display: none; /* Hide all by default */
+            display: none; 
             position: relative;
         }
 
@@ -156,8 +156,7 @@
             margin-bottom: 15px;
         }
 
-        /* Interactive Arrows */
-        /* Interactive Arrows */
+        
         .arrow {
             cursor: pointer;
             font-size: 36px;
@@ -180,14 +179,14 @@
         .arrow:hover {
             color: #ffe066;
             background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-50%) scale(1.2); /* Float and enlarge on hover */
-            width: 50px; /* Increase size */
+            transform: translateY(-50%) scale(1.2); 
+            width: 50px; 
             height: 50px;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Add a floating shadow effect */
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); 
         }
 
         .arrow-left {
-            left: 25%; /* Move it a bit outside for better floating space */
+            left: 25%; 
         }
 
         .arrow-right {
@@ -195,7 +194,7 @@
         }
 
 
-        /* Slogan Section */
+       
         .slogan {
             text-align: center;
             padding: 80px 0;
@@ -214,7 +213,7 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        /* Our Team Section */
+        
         .our-team {
             text-align: center;
             padding: 80px 20px;
@@ -231,14 +230,14 @@
             display: flex;
             justify-content: center;
             gap: 40px;
-            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            flex-wrap: wrap; 
         }
 
         .team-member {
             background-color: #333;
             border-radius: 8px;
             padding: 20px;
-            max-width: 200px; /* Set a max width for each team member card */
+            max-width: 200px; 
             color: #fff;
         }
 
@@ -250,24 +249,24 @@
 
         .team-member .role {
             font-weight: bold;
-            color: #ff6600; /* Role color */
+            color: #ff6600; 
             margin: 5px 0;
         }
 
         .team-member .message {
             font-style: italic;
-            color: #eaeaea; /* Message color */
+            color: #eaeaea; 
             margin: 5px 0;
         }
 
         .team-description {
             margin-top: 40px;
             color: #eaeaea;
-            max-width: 800px; /* Max width for combined description */
+            max-width: 800px; 
             margin-left: auto;
             margin-right: auto;
         }
-        /* Footer */
+        
         .footer {
             background-color: #000;
             text-align: center;
@@ -289,7 +288,7 @@
 </head>
 <body>
 
-    <!-- Navbar -->
+    
     <div class="navbar">
         <div class="logo">
             <img src="vitbuzz-logo.jpg" class="logo-img" alt="VitBuzz Logo">
@@ -302,14 +301,14 @@
         </ul>
     </div>
 
-    <!-- Hero Section -->
+    
     <div class="hero">
         <h1>Engage, Explore, Elevate</h1>
         <p>Your gateway to VIT's vibrant campus life</p>
         <button class="btn" onclick="window.location.href='events.html'">Discover Events</button>
     </div>
 
-    <!-- Hottest Events Section -->
+   
     <section class="hottest-events">
         <h2>Hottest Events Right Now! Don't Miss Out!</h2>
         <p>Catch up on the latest happenings around campus.</p>
@@ -374,7 +373,7 @@
         function registerEvent(eventName, eventDate) {
             let registeredEvents = JSON.parse(localStorage.getItem('registeredEvents')) || [];
                 
-                // Add the event as an object with name and date properties
+                
             registeredEvents.push({
                 name: eventName,
                 date: eventDate
@@ -385,18 +384,18 @@
             }
     </script>
 
-        <!-- Interactive Arrows -->
+       
         <span class="arrow arrow-left" id="prevEvent">&#10094;</span>
         <span class="arrow arrow-right" id="nextEvent">&#10095;</span>
     </section>
 
-    <!-- Slogan Section -->
+   
     <section class="slogan">
         <h2>Experience the Best of VIT</h2>
         <p>At VitBuzz, we bring together all the events and activities happening across the campus. Connect with your peers, explore opportunities, and elevate your college experience!</p>
     </section>
 
-        <!-- Our Team Section -->
+       
     <section class="our-team">
         <h2>Meet Our Team</h2>
         <div class="team-members">
@@ -430,7 +429,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    
     <div class="footer">
         <p>&copy; 2024 VitBuzz. All rights reserved.</p>
         <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
@@ -440,17 +439,17 @@
         const events = document.querySelectorAll('.event-card');
         let currentEventIndex = 0;
 
-        // Function to show the current event
+        
         const showEvent = (index) => {
             events.forEach((event, i) => {
                 event.style.display = i === index ? 'block' : 'none';
             });
         };
 
-        // Show the first event
+        
         showEvent(currentEventIndex);
 
-        // Previous and Next event functionality
+        
         document.getElementById('prevEvent').onclick = function() {
             currentEventIndex = (currentEventIndex - 1 + events.length) % events.length;
             showEvent(currentEventIndex);

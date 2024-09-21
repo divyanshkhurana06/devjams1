@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -68,7 +68,7 @@
             color: #ffcc00;
         }
 
-        /* Info Icon */
+        
         .info-icon {
             position: fixed;
             top: 90px;
@@ -76,13 +76,13 @@
             cursor: pointer;
             font-size: 24px;
             color: #ffcc00;
-            z-index: 300; /* Ensure it's on top */
-            background-color: rgba(0, 0, 0, 0.7); /* Optional: Add background for visibility */
-            border-radius: 50%; /* Optional: Make it round */
-            padding: 10px; /* Optional: Add some padding */
+            z-index: 300; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            border-radius: 50%; 
+            padding: 10px; 
         }
 
-        /* Popup Box */
+        
         .popup {
             display: none;
             position: fixed;
@@ -109,7 +109,7 @@
             border-radius: 5px;
         }
 
-        /* Clubs Section */
+        
         .clubs-container {
             padding: 100px 20px;
             margin-top: 60px;
@@ -173,7 +173,7 @@
             color: #fff;
         }
 
-        /* Scrollbar styling */
+        
         .clubs-container {
             scrollbar-width: thin;
             scrollbar-color: #ffcc00 #1a1a1a;
@@ -191,11 +191,27 @@
         .clubs-container::-webkit-scrollbar-track {
             background-color: #1a1a1a;
         }
+            footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #f0ebeb; 
+            font-size: 14px;
+            }
+
+            footer a {
+                color: #ffcc00; 
+                text-decoration: none; 
+                transition: color 0.3s; 
+            }
+
+            footer a:hover {
+                color: #ff6600; 
+            }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
+    
     <div class="navbar">
         <div class="logo">
             <a href="home.html">
@@ -210,16 +226,16 @@
         </ul>
     </div>
 
-    <!-- Info Icon -->
+    
     <div class="info-icon" onclick="showPopup()">&#9432;</div>
 
-    <!-- Popup -->
+   
     <div class="popup" id="popup">
         <p>To register as a club, email us at <strong>club.registration@vitbuzz.com</strong> to get verified and post about your events!</p>
         <button onclick="hidePopup()">Close</button>
     </div>
 
-    <!-- Clubs Section -->
+    
     <section class="clubs-container">
         <!-- Club 1 -->
         <div class="club-column">
@@ -285,6 +301,11 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2024 VitBuzz. All rights reserved.</p>
+        <p><a href="https://intelx.io/">Researched through INTELX Labs</a> | <a href="https://thinklayer.com/">Data analysed through Thinklayer</a></p>
+    </footer>
 
     <script>
         function showPopup() {
