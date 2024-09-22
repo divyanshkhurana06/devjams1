@@ -371,11 +371,18 @@
         const eventTime = document.querySelector('#eventModal input[type="time"]').value;
 
         if (eventName && eventDate && eventTime) {
+            // Calculate the remaining days
+            const currentDate = new Date();
+            const eventDateObj = new Date(eventDate);
+            const timeDifference = eventDateObj - currentDate;
+            const daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
             const newEvent = {
                 name: eventName,
                 date: eventDate,
                 time: eventTime,
-                tags: Array.from(selectedTags)
+                tags: Array.from(selectedTags),
+                daysRemaining: daysRemaining >= 0 ? daysRemaining : 0 // Ensure non-negative days
             };
 
             // Store event in localStorage
@@ -390,7 +397,8 @@
         }
     }
 };
-localstorage.clear
+
+
     </script>
 </body>
 </html>
