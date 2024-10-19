@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src = "main.js" defer type = "module"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VitBuzz - Login</title>
@@ -221,7 +222,7 @@
         <input type="password" placeholder="Enter your password" required>
     </div>
 
-    <button class="btn" id="loginBtn">Login</button>
+    <button class="btn" id="google-login-Btn">Login</button>
 
     <p class="headline">Getting bored? Join exciting events at VIT now!</p>
 
@@ -261,7 +262,7 @@
     const signUpModal = document.getElementById('signUpModal');
     const openSignUpModal = document.getElementById('openSignUpModal');
     const closeModal = document.getElementById('closeModal');
-    const loginBtn = document.getElementById('loginBtn');
+    // const loginBtn = document.getElementById('google-login-Btn');
     const registerBtn = document.getElementById('registerBtn');
     const clubRegisterBtn = document.getElementById('clubRegisterBtn');
 
@@ -287,10 +288,10 @@
     };
 
     
-    loginBtn.onclick = function() {
+    // loginBtn.onclick = function() {
        
-        window.location.href = 'home.html';
-    };
+    //     window.location.href = 'home.html';
+    // };
 
     
     registerBtn.onclick = function() {
