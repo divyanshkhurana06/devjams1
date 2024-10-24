@@ -54,7 +54,7 @@
         }
 
         .container {
-            margin-top: 80px;
+            margin-top: 100px;
             padding: 20px;
             background-color: #ff6600;
             border-radius: 10px;
@@ -78,8 +78,8 @@
         .tag-box {
             background-color: #1a1a1a;
             border-radius: 10px;
-            padding: 15px;
-            width: 150px;
+            padding: 18px;
+            width: 165px;
             text-align: center;
             transition: transform 0.2s, background-color 0.2s;
             cursor: pointer;
@@ -105,6 +105,16 @@
         button:hover {
             background-color: #e6b800;
         }
+
+        /* New styles for the name input */
+        .name-input {
+            margin-bottom: 20px;
+            padding: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +130,9 @@
 
     <div class="container">
         <h1>Select Your Interests</h1>
+        <p>Please enter your name:</p>
+        <input type="text" id="name-input" class="name-input" placeholder="Enter your name" />
+
         <p>Please choose exactly 3 fields:</p>
         <form id="interests-form">
             <div class="tags-container">
@@ -149,7 +162,16 @@
     <script>
         const tags = document.querySelectorAll('.tag-box');
         const form = document.getElementById('interests-form');
+        const nameInput = document.getElementById('name-input');
         let selectedTags = [];
+    
+        // Load name from localStorage if it exists
+        window.onload = () => {
+            const storedName = localStorage.getItem('userName');
+            if (storedName) {
+                nameInput.value = storedName; // Fill the input with the stored name
+            }
+        };
     
         tags.forEach(tag => {
             tag.addEventListener('click', () => {
@@ -173,7 +195,16 @@
     
         form.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form from submitting
-    
+
+            const name = nameInput.value.trim();
+            if (name) {
+                // Save the name to localStorage
+                localStorage.setItem('userName', name);
+            } else {
+                alert('Please enter your name.');
+                return;
+            }
+
             if (selectedTags.length !== 3) {
                 alert('Please select exactly 3 interests.');
             } else {
@@ -184,7 +215,6 @@
                 window.location.href = 'home.html';
             }
         });
-        localstorage.clear
     </script>
 </body>
 </html>

@@ -246,7 +246,7 @@
     </div>
 
     <div class="events-container" id="eventsContainer">
-         <!-- Event 1 -->
+         <!- Event 1 -->
          <div class="event-card" data-days="5" data-tags='["Tech", "AI", "Hackathon"]'>
             <div class="event-header">
                 <h2>GDSC</h2>
@@ -413,6 +413,54 @@
 
     <script>
         function openModal() {
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        function filterEvents(tag) {
+            const events = document.querySelectorAll('.event-card');
+            events.forEach(event => {
+                const tags = JSON.parse(event.getAttribute('data-tags'));
+                if (tags.includes(tag)) {
+                    event.style.display = 'block';
+                } else {
+                    event.style.display = 'none';
+                }
+            });
+            closeModal();
+        }
+
+        function registerEvent(name, date) {
+            const events = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+            const eventExists = events.some(event => event.name === name);
+
+            if (!eventExists) {
+                events.push({ name, date });
+            }
+
+            localStorage.setItem('registeredEvents', JSON.stringify(events));
+            alert(`You have successfully registered for ${name} on ${date}`);
+        }
+
+        // Load registered events on page load (if needed for profile page or similar)
+        function loadRegisteredEvents() {
+            const registeredEvents = JSON.parse(localStorage.getItem('registeredEvents')) || [];
+            const profileContainer = document.getElementById('profileContainer');  // Assuming profile container exists on the page
+
+            registeredEvents.forEach(event => {
+                const eventElement = document.createElement('div');
+                eventElement.textContent = `${event.name} - ${event.date}`;
+                profileContainer.appendChild(eventElement);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadRegisteredEvents);
+    </script>
+    <!-- <script>
+        function openModal() {
             document.getElementById('filterModal').style.display = 'flex';
             preSelectTags();
         }
@@ -480,7 +528,6 @@
                 eventsContainer.appendChild(eventCard);
             });
         });
-        localstorage.clear
-    </script>
+    </script> -->
 </body>
-</html>
+</html> 
